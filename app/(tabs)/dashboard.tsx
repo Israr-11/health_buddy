@@ -5,7 +5,7 @@ import { Colors } from '../../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
-// Mock data for health metrics
+// MOCK DATA FOR HEALTH METRICS
 const generateMockData = () => {
   return {
     steps: Math.floor(Math.random() * 8000) + 2000,
@@ -24,14 +24,13 @@ export default function Dashboard() {
 
   const onRefresh = () => {
     setRefreshing(true);
-    // Simulate data refresh
     setTimeout(() => {
       setHealthData(generateMockData());
       setRefreshing(false);
     }, 1000);
   };
 
-  // Determine suggested supplement based on health data
+  // DETERMINING SUGGESTED SUPPLEMENT BASED ON HEALTH DATA
   const getSuggestedSupplement = () => {
     if (healthData.steps < 5000) return "Vitamin D";
     if (parseFloat(healthData.sleep) < 6) return "Magnesium";
@@ -39,7 +38,7 @@ export default function Dashboard() {
     return "Multivitamin";
   };
 
-  // Get health tip based on data
+  // GETTING HEALTH TIPS BASED ON DATA
   const getHealthTip = () => {
     if (healthData.steps < 5000) 
       return "Try to walk more today to reach your step goal.";
@@ -58,9 +57,9 @@ export default function Dashboard() {
       }
     >
       <View style={styles.header}>
-        <Text style={[styles.greeting, { color: colors.text }]}>Hello, User!</Text>
+        <Text style={[styles.greeting, { color: colors.text }]}>Hello, Israr!</Text>
         <Text style={[styles.date, { color: colors.icon }]}>
-          {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+          {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
         </Text>
       </View>
 
@@ -71,7 +70,6 @@ export default function Dashboard() {
       </View>
 
       <View style={styles.metricsContainer}>
-        {/* Steps Card */}
         <View style={[styles.card, { backgroundColor: colors.card }]}>
           <View style={styles.cardHeader}>
             <Ionicons name="footsteps" size={24} color={colors.primary} />
@@ -81,7 +79,6 @@ export default function Dashboard() {
           <Text style={[styles.metricGoal, { color: colors.icon }]}>Goal: 10,000</Text>
         </View>
 
-        {/* Sleep Card */}
         <View style={[styles.card, { backgroundColor: colors.card }]}>
           <View style={styles.cardHeader}>
             <Ionicons name="moon" size={24} color={colors.primary} />
@@ -91,7 +88,6 @@ export default function Dashboard() {
           <Text style={[styles.metricGoal, { color: colors.icon }]}>Goal: 8 hours</Text>
         </View>
 
-        {/* Water Card */}
         <View style={[styles.card, { backgroundColor: colors.card }]}>
           <View style={styles.cardHeader}>
             <Ionicons name="water" size={24} color={colors.primary} />
@@ -101,7 +97,6 @@ export default function Dashboard() {
           <Text style={[styles.metricGoal, { color: colors.icon }]}>Goal: 2000 ml</Text>
         </View>
 
-        {/* Heart Rate Card */}
         <View style={[styles.card, { backgroundColor: colors.card }]}>
           <View style={styles.cardHeader}>
             <Ionicons name="heart" size={24} color={colors.primary} />
@@ -112,7 +107,6 @@ export default function Dashboard() {
         </View>
       </View>
 
-      {/* Supplement Suggestion */}
       <View style={[styles.supplementCard, { backgroundColor: colors.card }]}>
         <View style={styles.supplementHeader}>
           <Ionicons name="leaf" size={28} color={colors.secondary} />
@@ -129,7 +123,6 @@ export default function Dashboard() {
         </TouchableOpacity>
       </View>
 
-      {/* Navigation Buttons */}
       <View style={styles.navButtons}>
         <TouchableOpacity 
           style={[styles.navButton, { backgroundColor: colors.primary }]}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Switch, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Switch, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { useColorScheme } from 'react-native';
 import { Colors } from '../../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -33,7 +33,7 @@ export default function SettingsScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
         <Text style={[styles.title, { color: colors.text }]}>Settings</Text>
         <Text style={[styles.subtitle, { color: colors.icon }]}>
@@ -106,7 +106,7 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        <View style={styles.settingSection}>
+        <View style={[styles.settingSection, { borderBottomColor: colors.border }]}>
           <Text style={[styles.sectionTitle, { color: colors.text }]}>Account</Text>
           
           <TouchableOpacity style={styles.accountButton} onPress={() => Alert.alert("Info", "This would show your profile in a real app")}>
@@ -127,15 +127,15 @@ export default function SettingsScreen() {
         </View>
       </View>
 
-          <View style={styles.footer}>
+      <View style={styles.footer}>
         <Text style={[styles.footerText, { color: colors.icon }]}>
-          Reso Health v1.0.0
+          Health Buddy v1.0.0
         </Text>
         <Text style={[styles.footerText, { color: colors.icon }]}>
-          © 2023 Reso Health, Tramore, Ireland
+          © 2025 Health Buddy, Waterford, Ireland
         </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 20,
-    paddingTop: 10,
+    paddingTop: 15,
   },
   title: {
     fontSize: 28,
@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
+    marginBottom: 5, 
   },
   sectionTitle: {
     fontSize: 18,
@@ -190,7 +191,10 @@ const styles = StyleSheet.create({
   },
   footer: {
     padding: 20,
+    paddingTop: 30, 
+    paddingBottom: 30, 
     alignItems: 'center',
+    marginTop: 20, 
   },
   footerText: {
     fontSize: 14,

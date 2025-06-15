@@ -1,46 +1,59 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, KeyboardAvoidingView, Platform } from 'react-native';
-import { useRouter } from 'expo-router';
-import { Colors } from '../constants/Colors';
-import { useColorScheme } from 'react-native';
+import { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import { useRouter } from "expo-router";
+import { Colors } from "../constants/Colors";
+import { useColorScheme } from "react-native";
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
-  const colorScheme = useColorScheme() || 'light';
+  const colorScheme = useColorScheme() || "light";
   const colors = Colors[colorScheme];
 
   const handleLogin = () => {
-    // Simple validation
     if (!email || !password) {
-      setError('Please enter both email and password');
+      setError("Please enter both email and password");
       return;
     }
-    
-    // Mock authentication - in a real app, you'd call an API
-    if (email === 'test@reso.com' && password === '123456') {
-      // Navigate to dashboard on successful login
-      router.replace('./(tabs)/dashboard');
+
+    if (email === "test@buddy.com" && password === "123456") {
+      router.replace("./(tabs)/dashboard");
     } else {
-      setError('Invalid credentials. Try test@reso.com / 123456');
+      setError("Invalid credentials. Try test@buddy.com / 123456");
     }
   };
 
   return (
-    <KeyboardAvoidingView 
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={[styles.container, { backgroundColor: colors.background }]}
     >
       <View style={styles.logoContainer}>
-        <Text style={[styles.logoText, { color: colors.primary }]}>Reso Health</Text>
-        <Text style={[styles.tagline, { color: colors.text }]}>Your health companion</Text>
+        <Text style={[styles.logoText, { color: colors.primary }]}>
+          Health Buddy
+        </Text>
+        <Text style={[styles.tagline, { color: colors.text }]}>
+          Your health companion
+        </Text>
       </View>
-      
+
       <View style={styles.formContainer}>
         <TextInput
-          style={[styles.input, { borderColor: colors.border, color: colors.text }]}
+          style={[
+            styles.input,
+            { borderColor: colors.border, color: colors.text },
+          ]}
           placeholder="Email"
           placeholderTextColor={colors.icon}
           value={email}
@@ -48,27 +61,30 @@ export default function LoginScreen() {
           autoCapitalize="none"
           keyboardType="email-address"
         />
-        
+
         <TextInput
-          style={[styles.input, { borderColor: colors.border, color: colors.text }]}
+          style={[
+            styles.input,
+            { borderColor: colors.border, color: colors.text },
+          ]}
           placeholder="Password"
           placeholderTextColor={colors.icon}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
-        
+
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
-        
-        <TouchableOpacity 
+
+        <TouchableOpacity
           style={[styles.button, { backgroundColor: colors.primary }]}
           onPress={handleLogin}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        
+
         <Text style={[styles.hint, { color: colors.icon }]}>
-          Hint: Use test@reso.com / 123456
+          Hint: Use test@buddy.com / 123456
         </Text>
       </View>
     </KeyboardAvoidingView>
@@ -78,23 +94,23 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     padding: 20,
   },
   logoContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 40,
   },
   logoText: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   tagline: {
     fontSize: 16,
     marginTop: 8,
   },
   formContainer: {
-    width: '100%',
+    width: "100%",
   },
   input: {
     height: 50,
@@ -107,22 +123,22 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 10,
   },
   buttonText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   errorText: {
-    color: '#F44336',
+    color: "#F44336",
     marginBottom: 10,
   },
   hint: {
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 20,
     fontSize: 14,
-  }
+  },
 });

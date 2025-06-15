@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
 export default function DispenserScreen() {
-  const [status, setStatus] = useState('disconnected'); // disconnected, scanning, connected, dispensing, complete
+  const [status, setStatus] = useState('disconnected'); 
   const [dispensedItem, setDispensedItem] = useState<{ name: string; amount: string } | null>(null);
   const colorScheme = useColorScheme() || 'light';
   const colors = Colors[colorScheme];
@@ -15,7 +15,7 @@ export default function DispenserScreen() {
   const connectToDispenser = () => {
     setStatus('scanning');
     
-    // Simulate BLE scanning and connection
+    // SIMULATING BLE SCANNING AND CONNECTION
     setTimeout(() => {
       setStatus('connected');
     }, 2000);
@@ -24,7 +24,7 @@ export default function DispenserScreen() {
   const dispense = () => {
     setStatus('dispensing');
     
-    // Simulate dispensing process
+    // SIMULATING DISPENSING PROCESS
     setTimeout(() => {
       const supplements = [
         { name: 'Vitamin D', amount: '1000 IU' },
@@ -33,7 +33,6 @@ export default function DispenserScreen() {
         { name: 'Omega-3', amount: '500 mg' }
       ];
       
-      // Randomly select a supplement
       const randomSupplement = supplements[Math.floor(Math.random() * supplements.length)];
       setDispensedItem(randomSupplement);
       setStatus('complete');
@@ -45,7 +44,7 @@ export default function DispenserScreen() {
       <View style={styles.header}>
         <Text style={[styles.title, { color: colors.text }]}>Smart Dispenser</Text>
         <Text style={[styles.subtitle, { color: colors.icon }]}>
-          Connect to your Reso Health smart dispenser
+          Connect to your Health Buddy's smart dispenser
         </Text>
       </View>
 
@@ -115,7 +114,7 @@ export default function DispenserScreen() {
         <View style={styles.infoItem}>
           <Ionicons name="bluetooth" size={24} color={colors.primary} style={styles.infoIcon} />
           <Text style={[styles.infoText, { color: colors.text }]}>
-            Connect to your Reso Health smart dispenser via Bluetooth
+            Connect to your  Health Buddy's smart dispenser via Bluetooth
           </Text>
         </View>
         <View style={styles.infoItem}>
