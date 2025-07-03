@@ -4,6 +4,7 @@
  */
 
 const primaryColor = '#0a7ea4';
+
 const secondaryColor = '#4CAF50';
 const accentColor = '#FF5722';
 
